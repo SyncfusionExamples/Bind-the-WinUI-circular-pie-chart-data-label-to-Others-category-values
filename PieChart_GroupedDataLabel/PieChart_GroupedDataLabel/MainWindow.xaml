@@ -1,0 +1,59 @@
+<!-- Copyright (c) Microsoft Corporation and Contributors. -->
+<!-- Licensed under the MIT License. -->
+
+<Window
+    x:Class="PieChart_GroupedDataLabel.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PieChart_GroupedDataLabel"
+     xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid>
+        <Grid.DataContext>
+            <local:ViewModel x:Name="viewModel"/>
+        </Grid.DataContext>
+        <Grid.Resources>
+            <local:DataLabelXValueConverter x:Key="dataLabelXValue"/>
+            <local:DataLabelYValueConverter x:Key="dataLabelYValue" />
+            <DataTemplate x:Key="dataMarkerTemplate">
+                <StackPanel BorderBrush="Black" BorderThickness="1"  CornerRadius="2" Orientation="Horizontal">
+                    <TextBlock Foreground="Black" FontWeight="Bold" Text="{Binding Converter={StaticResource dataLabelXValue}}" />
+                    <TextBlock Text=":  " Foreground="Black" FontWeight="Bold"/>
+                    <TextBlock Foreground="Black" FontWeight="Bold" Text="{Binding Converter={StaticResource dataLabelYValue}}"  />
+                </StackPanel>
+            </DataTemplate>
+            <BrushCollection x:Key="customBrushes">
+                <SolidColorBrush Color="#585DAC"/>
+                <SolidColorBrush Color="#B28DD4"/>
+                <SolidColorBrush Color="#5DAC88"/>
+                <SolidColorBrush Color="#F2BB30"/>
+                <SolidColorBrush Color="#E66C69"/>
+                <SolidColorBrush Color="#27B9B4"/>
+                <SolidColorBrush Color="#FB6690"/>
+            </BrushCollection>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <chart:SfCircularChart Margin="10">
+            <chart:SfCircularChart.Header>
+                <TextBlock Text="Sales Percentage" FontWeight="Bold" />
+            </chart:SfCircularChart.Header>
+            <chart:PieSeries XBindingPath="Product" ShowDataLabels="True" Radius="0.7"
+                             GroupTo="10" GroupMode="Percentage" YBindingPath="SalesPercentage"
+                             ItemsSource="{Binding Data}" 
+                             PaletteBrushes="{StaticResource customBrushes}">
+                <chart:PieSeries.DataLabelSettings>
+                    <chart:CircularDataLabelSettings ShowConnectorLine="True" 
+                                                     Context="DataLabelItem" 
+                                                 Position="OutsideExtended"
+                                                 UseSeriesPalette="True" 
+                                                 ContentTemplate="{StaticResource dataMarkerTemplate}" />
+                </chart:PieSeries.DataLabelSettings>
+
+            </chart:PieSeries>
+        </chart:SfCircularChart>
+    </Grid>
+</Window>
