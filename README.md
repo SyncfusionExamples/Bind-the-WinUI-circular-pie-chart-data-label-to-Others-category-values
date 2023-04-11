@@ -1,6 +1,5 @@
 # Bind-the-WinUI-circular-pie-chart-data-label-to-Others-category-values
 This sample demonstrates how to bind the pie chart data label to “Others” category values in WinUI (SfCircularChart).
-
 <br><br>
 The ContentTemplate property can be used to customize the data label of the pie chart by using the Context property with an IValueConverter. To bind the data label in the "Others" category, we can use the GroupTo and GroupMode properties in the CircularSeries. The following code example demonstrates how to bind the data label of the pie chart to the "Others" category in the SfCircularChart.
 
