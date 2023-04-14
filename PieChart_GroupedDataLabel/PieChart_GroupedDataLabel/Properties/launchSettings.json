@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PieChart_GroupedDataLabel (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "PieChart_GroupedDataLabel (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
