@@ -97,5 +97,5 @@ public class DataLabelYValueConverter : IValueConverter
 
 **See also**
 
-[Data template in WinUI Circular chart](https://help.syncfusion.com/winui/circular-charts/datalabels#template).
+* [Data template in WinUI Circular chart](https://help.syncfusion.com/winui/circular-charts/datalabels#template).
 
